@@ -33,7 +33,8 @@ from behavior.state import context as state_context
 from behavior.state.state import StateA, StateB
 from behavior.strategy import context as strategy_context
 from behavior.strategy.strategy import ConcreteStrategyA, ConcreteStrategyB
-
+from behavior.template_method import template as template_method
+from behavior.template_method.methods import Method1, Method2
     
 class MetaObjSingleton(metaclass=MetaclassSingleton):
     def __init__(self):
@@ -353,4 +354,12 @@ if __name__ == "__main__":
     context.execute_strategy()
     context.set_strategy(strategy_b)
     context.execute_strategy()
+    print("------------------------------")
+
+    print("Testing Template Method Implementation:")
+    print("------------------------------")
+    method1 = Method1()
+    method2 = Method2()
+    method1.template_method()
+    method2.template_method()
     print("------------------------------")
