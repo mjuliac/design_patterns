@@ -29,6 +29,6 @@ class Originator(IOriginator):
         return Memento(self.state)
     
     def set_memento(self, memento):
-        state = memento.get_sate()
+        state = memento.get_state()
         print(f"Originator state after restoring memento")
         self.state = state
