@@ -306,12 +306,15 @@ if __name__ == "__main__":
     caregiver.backup()
     originator.set_state("1-2-3.")
     caregiver.backup()
+    
     originator.set_state("1-2.")
     print(f"Actual State: {originator.state}\n")
     caregiver.revert()
     caregiver.revert()
     caregiver.revert()
     print("------------------------------")
+    
+    
     
     
     
