@@ -35,6 +35,9 @@ from behavior.strategy import context as strategy_context
 from behavior.strategy.strategy import ConcreteStrategyA, ConcreteStrategyB
 from behavior.template_method import template as template_method
 from behavior.template_method.methods import Method1, Method2
+from behavior.visitor.element import ElementA, ElementB
+from behavior.visitor.visitor import VisitorA, VisitorB
+
     
 class MetaObjSingleton(metaclass=MetaclassSingleton):
     def __init__(self):
@@ -362,4 +365,16 @@ if __name__ == "__main__":
     method2 = Method2()
     method1.template_method()
     method2.template_method()
+    print("------------------------------")
+
+    print("Testing Visitor Implementation:")
+    print("------------------------------")
+    elements = [ElementA(), ElementB(), ElementA()]
+    visitor_a = VisitorA()
+    visitor_b = VisitorB()
+    for element in elements:
+        element.accept(visitor_a)
+    print("\n")
+    for element in elements:
+        element.accept(visitor_b)
     print("------------------------------")
