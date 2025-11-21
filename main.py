@@ -29,6 +29,8 @@ from behavior.memento.originator import Originator
 from behavior.memento.caregiver import Caregiver
 from behavior.observer.observer import ConcreteObserverA, ConcreteObserverB
 from behavior.observer.publisher import Publisher
+from behavior.state.context import Context
+from behavior.state.state import StateA, StateB
 
     
 class MetaObjSingleton(metaclass=MetaclassSingleton):
@@ -326,4 +328,16 @@ if __name__ == "__main__":
     publisher.subscribe(observer_b)
     publisher.set_state(1)
     publisher.set_state(0)
+    print("------------------------------")
+
+
+    print("Testing State Implementation:")
+    print("------------------------------")
+    state_a = StateA()
+    state_b = StateB()
+    context = Context()
+    context.set_state(state_a)
+    context.request()
+    context.set_state(state_b)
+    context.request()
     print("------------------------------")
