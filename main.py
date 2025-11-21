@@ -25,6 +25,8 @@ from behavior.interpreter.expresion import Numero, Suma, Resta, Multiplicacion, 
 from behavior.iterator.collection import CollectionImpl
 from behavior.mediator.components import ComponentA, ComponentB
 from behavior.mediator.mediator import MediatorImpl
+from behavior.memento.originator import Originator
+from behavior.memento.caregiver import Caregiver
 
     
 class MetaObjSingleton(metaclass=MetaclassSingleton):
@@ -293,3 +295,24 @@ if __name__ == "__main__":
     component_a.send("Hello from Component A")
     component_b.send("Hello from Component B")
     print("------------------------------")
+    
+    
+    print("Testing Memento Implementation:")
+    print("------------------------------")
+    originator = Originator("1-2-3-4-5.")  
+    caregiver = Caregiver(originator)
+    caregiver.backup()
+    originator.set_state("1-2-3-4.")
+    caregiver.backup()
+    originator.set_state("1-2-3.")
+    caregiver.backup()
+    originator.set_state("1-2.")
+    print(f"Actual State: {originator.state}\n")
+    caregiver.revert()
+    caregiver.revert()
+    caregiver.revert()
+    print("------------------------------")
+    
+    
+    
+    
