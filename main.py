@@ -29,8 +29,10 @@ from behavior.memento.originator import Originator
 from behavior.memento.caregiver import Caregiver
 from behavior.observer.observer import ConcreteObserverA, ConcreteObserverB
 from behavior.observer.publisher import Publisher
-from behavior.state.context import Context
+from behavior.state import context as state_context
 from behavior.state.state import StateA, StateB
+from behavior.strategy import context as strategy_context
+from behavior.strategy.strategy import ConcreteStrategyA, ConcreteStrategyB
 
     
 class MetaObjSingleton(metaclass=MetaclassSingleton):
@@ -335,9 +337,20 @@ if __name__ == "__main__":
     print("------------------------------")
     state_a = StateA()
     state_b = StateB()
-    context = Context()
+    context = state_context.Context()
     context.set_state(state_a)
     context.request()
     context.set_state(state_b)
     context.request()
+    print("------------------------------")
+
+
+    print("Testing Strategy Implementation:")
+    print("------------------------------")
+    strategy_a = ConcreteStrategyA()
+    strategy_b = ConcreteStrategyB()
+    context = strategy_context.Context(strategy_a)
+    context.execute_strategy()
+    context.set_strategy(strategy_b)
+    context.execute_strategy()
     print("------------------------------")
