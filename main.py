@@ -27,6 +27,8 @@ from behavior.mediator.components import ComponentA, ComponentB
 from behavior.mediator.mediator import MediatorImpl
 from behavior.memento.originator import Originator
 from behavior.memento.caregiver import Caregiver
+from behavior.observer.observer import ConcreteObserverA, ConcreteObserverB
+from behavior.observer.publisher import Publisher
 
     
 class MetaObjSingleton(metaclass=MetaclassSingleton):
@@ -315,7 +317,13 @@ if __name__ == "__main__":
     print("------------------------------")
     
     
-    
-    
-    
-    
+    print("Testing Observer Implementation")
+    print("------------------------------")
+    publisher = Publisher()
+    observer_a = ConcreteObserverA()
+    observer_b = ConcreteObserverB()
+    publisher.subscribe(observer_a)
+    publisher.subscribe(observer_b)
+    publisher.set_state(1)
+    publisher.set_state(0)
+    print("------------------------------")
